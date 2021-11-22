@@ -423,6 +423,7 @@ class SliverStaggeredGrid extends SliverVariableSizeBoxAdaptorWidget {
     @required int crossAxisCount,
     double mainAxisSpacing: 0.0,
     double crossAxisSpacing: 0.0,
+    bool addAutomaticKeepAlives = false,
     List<Widget> children: const <Widget>[],
     List<StaggeredTile> staggeredTiles: const <StaggeredTile>[],
   })  : gridDelegate = new SliverStaggeredGridDelegateWithFixedCrossAxisCount(
@@ -435,7 +436,7 @@ class SliverStaggeredGrid extends SliverVariableSizeBoxAdaptorWidget {
         super(
             key: key,
             delegate: new SliverChildListDelegate(children,
-                addAutomaticKeepAlives: true));
+                addAutomaticKeepAlives: addAutomaticKeepAlives));
 
   /// Creates a sliver that builds multiple box children in a two dimensional
   /// arrangement with a fixed number of tiles in the cross axis.
@@ -458,6 +459,7 @@ class SliverStaggeredGrid extends SliverVariableSizeBoxAdaptorWidget {
     @required IndexedWidgetBuilder itemBuilder,
     @required int itemCount,
     double mainAxisSpacing: 0.0,
+    bool addAutomaticKeepAlives = false,
     double crossAxisSpacing: 0.0,
   })  : gridDelegate = new SliverStaggeredGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: crossAxisCount,
@@ -471,7 +473,7 @@ class SliverStaggeredGrid extends SliverVariableSizeBoxAdaptorWidget {
           delegate: SliverChildBuilderDelegate(
             itemBuilder,
             childCount: itemCount,
-            addAutomaticKeepAlives: true,
+            addAutomaticKeepAlives: addAutomaticKeepAlives,
             addRepaintBoundaries: true,
           ),
         );
@@ -490,6 +492,7 @@ class SliverStaggeredGrid extends SliverVariableSizeBoxAdaptorWidget {
     @required double maxCrossAxisExtent,
     double mainAxisSpacing: 0.0,
     double crossAxisSpacing: 0.0,
+    bool addAutomaticKeepAlives = false,
     List<Widget> children: const <Widget>[],
     List<StaggeredTile> staggeredTiles: const <StaggeredTile>[],
   })  : gridDelegate = new SliverStaggeredGridDelegateWithMaxCrossAxisExtent(
@@ -502,7 +505,7 @@ class SliverStaggeredGrid extends SliverVariableSizeBoxAdaptorWidget {
         super(
             key: key,
             delegate: new SliverChildListDelegate(children,
-                addAutomaticKeepAlives: true));
+                addAutomaticKeepAlives: addAutomaticKeepAlives));
 
   /// Creates a sliver that builds multiple box children in a two dimensional
   /// arrangement with tiles that each have a maximum cross-axis extent.
@@ -526,6 +529,7 @@ class SliverStaggeredGrid extends SliverVariableSizeBoxAdaptorWidget {
     @required int itemCount,
     double mainAxisSpacing: 0.0,
     double crossAxisSpacing: 0.0,
+    bool addAutomaticKeepAlives = false,
   })  : gridDelegate = new SliverStaggeredGridDelegateWithMaxCrossAxisExtent(
           maxCrossAxisExtent: maxCrossAxisExtent,
           mainAxisSpacing: mainAxisSpacing,
@@ -538,7 +542,7 @@ class SliverStaggeredGrid extends SliverVariableSizeBoxAdaptorWidget {
           delegate: SliverChildBuilderDelegate(
             itemBuilder,
             childCount: itemCount,
-            addAutomaticKeepAlives: true,
+            addAutomaticKeepAlives: addAutomaticKeepAlives,
             addRepaintBoundaries: true,
           ),
         );
