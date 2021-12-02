@@ -25,7 +25,7 @@ class MyScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: StreamBuilder<int>(
+      body: StreamBuilder<int?>(
         stream: BlocProvider.of<SimpleBloc>(context).counter,
         initialData: 0,
         builder: (context, snapshot) =>
@@ -65,8 +65,8 @@ class GridTest extends StatelessWidget {
 
 class StaggeredTest extends StatelessWidget {
   StaggeredTest(this.count, this.value);
-  final int count;
-  final int value;
+  final int? count;
+  final int? value;
 
   @override
   Widget build(BuildContext context) {
@@ -101,25 +101,24 @@ class SimpleBloc implements Disposable {
     return SimpleBloc._(StreamController<int>());
   }
 
-  final StreamController<int> _counterController;
-  final Stream<int> counter;
-  int _counter;
+  final StreamController<int?> _counterController;
+  final Stream<int?> counter;
+  int? _counter;
 
   void dispose() {
     _counterController.close();
   }
 
   void increment() {
-    _counter++;
-    _counterController.sink.add(_counter);
+
   }
 }
 
 class BlocProvider<T extends Disposable> extends StatefulWidget {
   BlocProvider({
-    Key key,
-    @required this.child,
-    @required this.bloc,
+    Key? key,
+    required this.child,
+    required this.bloc,
   }) : super(key: key);
 
   final T bloc;
@@ -130,7 +129,7 @@ class BlocProvider<T extends Disposable> extends StatefulWidget {
 
   static T of<T extends Disposable>(BuildContext context) {
     final type = _typeOf<BlocProvider<T>>();
-    BlocProvider<T> provider = context.ancestorWidgetOfExactType(type);
+    BlocProvider<T> provider = context.findAncestorRenderObjectOfType() as BlocProvider<T>;
     return provider.bloc;
   }
 
