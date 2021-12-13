@@ -16,7 +16,7 @@ class ExampleTests extends StatelessWidget {
           slivers: <Widget>[
             SliverStaggeredGrid.countBuilder(
               crossAxisCount: 2,
-              staggeredTileBuilder: (_) => StaggeredTile.fit(1),
+              staggeredTileBuilder: (_) => StaggeredTile.fit(2),
               itemBuilder: (context, index) => ProductGridItem(
                     products[index],
                   ),

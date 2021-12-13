@@ -29,7 +29,7 @@ class StaggeredTile {
   ///
   /// This tile will have a fixed main axis extent.
   const StaggeredTile.fit(this.crossAxisCellCount)
-      : assert(crossAxisCellCount != null && crossAxisCellCount >= 0),
+      : assert(crossAxisCellCount >= 0),
         mainAxisExtent = null,
         mainAxisCellCount = null;
 
