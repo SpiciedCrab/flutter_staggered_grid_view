@@ -23,7 +23,7 @@ const List<StaggeredTile> _tiles = const <StaggeredTile>[
   const StaggeredTile.count(1, 1),
   const StaggeredTile.count(1, 1),
   const StaggeredTile.count(1, 1),
-  //const StaggeredTile.count(1, 1),
+  const StaggeredTile.count(1, 1),
 ];
 
 List<Widget> _children = <Widget>[
@@ -54,7 +54,7 @@ List<Widget> _children = <Widget>[
   const HomeTile('dynamic resizing', Colors.pink, example06),
   const HomeTile('dynamic tile sizes', Colors.pink, example07),
   const HomeTile('random dynamic tile sizes', Colors.pink, example08),
-  //const HomeTile('test', Colors.pink, exampleTests),
+  const HomeTile('test', Colors.pink, exampleTests),
 ];
 
 class Home extends StatelessWidget {
@@ -100,7 +100,7 @@ class HomeHeaderTile extends StatelessWidget {
             textAlign: TextAlign.center,
             style: Theme.of(context)
                 .primaryTextTheme
-                .title
+                .subtitle1
                 .copyWith(color: backgroundColor),
           ),
         ),
@@ -129,7 +129,7 @@ class HomeTile extends StatelessWidget {
             child: new Text(
               title,
               textAlign: TextAlign.center,
-              style: Theme.of(context).primaryTextTheme.title.copyWith(
+              style: Theme.of(context).primaryTextTheme.subtitle1.copyWith(
                   color:
                       ThemeData.estimateBrightnessForColor(backgroundColor) ==
                               Brightness.dark
