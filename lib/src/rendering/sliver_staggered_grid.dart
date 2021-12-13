@@ -133,17 +133,17 @@ bool _nearEqual(double d1, double d2) {
 class SliverStaggeredGridGeometry extends SliverGridGeometry {
   /// Creates an object that describes the placement of a child in a [RenderSliverStaggeredGrid].
   const SliverStaggeredGridGeometry({
-    required scrollOffset,
-    required crossAxisOffset,
-    required mainAxisExtent,
-    required crossAxisExtent,
+    double? scrollOffset,
+    double? crossAxisOffset,
+    double? mainAxisExtent,
+    double? crossAxisExtent,
     required this.crossAxisCellCount,
     required this.blockIndex,
   }) : super(
-            scrollOffset: scrollOffset,
-            crossAxisOffset: crossAxisOffset,
-            mainAxisExtent: mainAxisExtent,
-            crossAxisExtent: crossAxisExtent);
+            scrollOffset: scrollOffset ?? 0,
+            crossAxisOffset: crossAxisOffset ?? 0,
+            mainAxisExtent: mainAxisExtent ?? 0,
+            crossAxisExtent: crossAxisExtent ?? 0);
 
   final int crossAxisCellCount;
 
