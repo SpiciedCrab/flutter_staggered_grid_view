@@ -130,7 +130,7 @@ class BlocProvider<T extends Disposable> extends StatefulWidget {
 
   static T of<T extends Disposable>(BuildContext context) {
     final type = _typeOf<BlocProvider<T>>();
-    BlocProvider<T> provider = context.findAncestorRenderObjectOfType();
+    BlocProvider<T> provider = context.ancestorWidgetOfExactType(type);
     return provider.bloc;
   }
 

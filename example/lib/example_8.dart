@@ -86,21 +86,16 @@ class Example08 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      backgroundColor: Colors.yellow,
       appBar: new AppBar(
         title: new Text('random dynamic tile sizes'),
       ),
-      body: CustomScrollView(
-        slivers: [
-          SliverToBoxAdapter(child: Container(height: 300, color: Colors.yellow,),),
-          SliverStaggeredGrid.countBuilder(
-            crossAxisCount: 4,
-            // mainAxisSpacing: 4.0,
-            // crossAxisSpacing: 4.0,
-            itemBuilder: (context, index) => new _Tile(index, _sizes[index]),
-            staggeredTileBuilder: (index) => new StaggeredTile.fit(2),
-          )
-        ],
+      body: new StaggeredGridView.countBuilder(
+        primary: false,
+        crossAxisCount: 4,
+        mainAxisSpacing: 4.0,
+        crossAxisSpacing: 4.0,
+        itemBuilder: (context, index) => new _Tile(index, _sizes[index]),
+        staggeredTileBuilder: (index) => new StaggeredTile.fit(2),
       ),
     );
   }

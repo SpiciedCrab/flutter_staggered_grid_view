@@ -37,10 +37,10 @@ class StaggeredTile {
   final int crossAxisCellCount;
 
   /// The number of cells occupied in the main axis.
-  final num? mainAxisCellCount;
+  final num mainAxisCellCount;
 
   /// The number of pixels occupied in the main axis.
-  final double? mainAxisExtent;
+  final double mainAxisExtent;
 
   bool get fitContent => mainAxisCellCount == null && mainAxisExtent == null;
 }
