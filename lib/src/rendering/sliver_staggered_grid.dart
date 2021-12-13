@@ -131,8 +131,11 @@ bool _nearEqual(double d1, double d2) {
 ///    [RenderSliverStaggeredGrid.performLayout] method.
 @immutable
 class SliverStaggeredGridGeometry extends SliverGridGeometry {
+
+  double? mainAxis;
+
   /// Creates an object that describes the placement of a child in a [RenderSliverStaggeredGrid].
-  const SliverStaggeredGridGeometry({
+  SliverStaggeredGridGeometry({
     double? scrollOffset,
     double? crossAxisOffset,
     double? mainAxisExtent,
@@ -142,14 +145,16 @@ class SliverStaggeredGridGeometry extends SliverGridGeometry {
   }) : super(
             scrollOffset: scrollOffset ?? 0,
             crossAxisOffset: crossAxisOffset ?? 0,
-            mainAxisExtent: mainAxisExtent ?? 0,
-            crossAxisExtent: crossAxisExtent ?? 0);
+            mainAxisExtent: mainAxisExtent ?? double.infinity,
+            crossAxisExtent: crossAxisExtent ?? 0) {
+    mainAxis = mainAxisExtent;
+  }
 
   final int crossAxisCellCount;
 
   final int blockIndex;
 
-  bool get hasTrailingScrollOffset => mainAxisExtent != null;
+  bool get hasTrailingScrollOffset => mainAxis != null;
 
   SliverStaggeredGridGeometry copyWith({
     double? scrollOffset,
@@ -174,8 +179,8 @@ class SliverStaggeredGridGeometry extends SliverGridGeometry {
   @override
   BoxConstraints getBoxConstraints(SliverConstraints constraints) {
     return constraints.asBoxConstraints(
-      minExtent: mainAxisExtent,
-      maxExtent: mainAxisExtent,
+      minExtent: mainAxis ?? 0.0,
+      maxExtent: mainAxis ?? double.infinity,
       crossAxisExtent: crossAxisExtent,
     );
   }
